@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import {
   SafeAreaProvider,
@@ -13,9 +13,22 @@ import {
 } from 'react-native-safe-area-context';
 import { COLORS } from '@styles/colors';
 import { FONTS, FONT_SIZES } from '@styles/typography';
+import { movieService } from '@api/services';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+
+  useEffect(() => {
+    const testAPI = async () => {
+      try {
+        const data = await movieService.getUpcomingMovies();
+        console.log('Movies:', JSON.stringify(data,null,2));
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    testAPI();
+  }, []);
 
   return (
     <SafeAreaProvider>
