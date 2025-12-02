@@ -6,23 +6,21 @@
  */
 
 import React, { useEffect } from 'react';
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import { COLORS } from '@styles/colors';
-import { FONTS, FONT_SIZES } from '@styles/typography';
-import { movieService } from '@api/services';
+import { StatusBar, StyleSheet, } from 'react-native';
+import { SafeAreaProvider, } from 'react-native-safe-area-context';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+import { FONTS, FONT_SIZES } from '@styles/typography';
+import AppNavigator from '@navigation/AppNavigator';
+import { movieService } from '@api/services';
+import { COLORS } from '@styles/colors';
+
+const App = () => {
 
   useEffect(() => {
     const testAPI = async () => {
       try {
         const data = await movieService.getUpcomingMovies();
-        console.log('Movies:', JSON.stringify(data,null,2));
+        console.log('Movies:', JSON.stringify(data, null, 2));
       } catch (error) {
         console.error('Error:', error);
       }
@@ -33,24 +31,10 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
-      <AppContent />
+      <AppNavigator />
     </SafeAreaProvider>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>✅ Setup Complete!</Text>
-      <Text style={styles.subtitle}>Colors & Fonts Ready</Text>
-      <View style={styles.colorBox}>
-        <Text style={styles.colorText}>Primary Color</Text>
-      </View>
-    </View>
-  );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
