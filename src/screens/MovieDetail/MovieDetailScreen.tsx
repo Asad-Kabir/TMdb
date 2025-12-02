@@ -1,28 +1,14 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-  ImageBackground,
-} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '@navigation/types';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import {
-  fetchMovieDetails,
-  fetchMovieVideos,
-  clearMovieDetails,
-} from '@store/slices/movieSlice';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
+
+import { fetchMovieDetails, fetchMovieVideos, clearMovieDetails, } from '@store/slices/movieSlice';
 import { LoadingSpinner, ErrorView } from '@components/common';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { RootStackParamList } from '@navigation/types';
 import { IMAGE_BASE_URL } from '@api/client';
 import { IMAGE_SIZES } from '@api/endpoints';
-import { formatDate } from '@utils/helpers';
-
-const { width } = Dimensions.get('window');
+import COLORS from '@styles/colors';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MovieDetail'>;
 
@@ -162,8 +148,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 20,
   },
-  backArrow: { color: '#fff', fontSize: 24, marginRight: 4 },
-  backText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  backArrow: { color: COLORS.white, fontSize: 24, marginRight: 4 },
+  backText: { color: COLORS.white, fontSize: 16, fontWeight: '600' },
   titleSection: {
     paddingHorizontal: 20,
     marginTop: 20,
@@ -175,30 +161,26 @@ const styles = StyleSheet.create({
     color: '#000',
     textAlign: 'center',
   },
-  release: {
-    fontSize: 16,
-    color: '#666',
-    marginTop: 8,
-  },
+
   buttonsContainer: {
     padding: 50,
     marginTop: 24,
     gap: 12,
   },
   getTicketsBtn: {
-    backgroundColor: '#00C2FF',
+    backgroundColor: COLORS.blue,
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',
   },
   getTicketsText: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 18,
     fontWeight: 'bold',
   },
   trailerBtn: {
     borderWidth: 2,
-    borderColor: '#00C2FF',
+    borderColor: COLORS.blue,
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',
@@ -206,7 +188,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   trailerBtnText: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 16,
     fontWeight: '600',
     marginLeft: 8,
@@ -218,7 +200,7 @@ const styles = StyleSheet.create({
   genresLabel: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#000',
+    color: COLORS.black,
     marginBottom: 12,
   },
   genresRow: {
@@ -234,7 +216,7 @@ const styles = StyleSheet.create({
   genreText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#000',
+    color: COLORS.black,
   },
   overviewSection: {
     paddingHorizontal: 20,
@@ -244,13 +226,13 @@ const styles = StyleSheet.create({
   overviewTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#000',
+    color: COLORS.black,
     marginBottom: 12,
   },
   overviewText: {
     fontSize: 15,
     lineHeight: 22,
-    color: '#444',
+    color: COLORS.gray,
   },
 });
 

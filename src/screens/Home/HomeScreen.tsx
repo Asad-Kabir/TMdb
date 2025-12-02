@@ -1,18 +1,13 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@navigation/types';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { fetchUpcomingMovies } from '@store/slices/movieSlice';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, } from 'react-native';
+
 import { MovieCard, LoadingSpinner, ErrorView } from '@components/common';
-import { COLORS } from '@styles/colors';
+import { fetchUpcomingMovies } from '@store/slices/movieSlice';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { FONTS, FONT_SIZES } from '@styles/typography';
+import { COLORS } from '@styles/colors';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -54,9 +49,7 @@ const HomeScreen = ({ navigation }: Props) => {
       <FlatList
         data={upcomingMovies}
         keyExtractor={(item) => item.id.toString()}
-        // numColumns={2}
         contentContainerStyle={styles.listContent}
-        // columnWrapperStyle={styles.columnWrapper}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <MovieCard
