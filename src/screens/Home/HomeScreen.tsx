@@ -54,13 +54,13 @@ const HomeScreen = ({ navigation }: Props) => {
       <FlatList
         data={upcomingMovies}
         keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
+        // numColumns={2}
         contentContainerStyle={styles.listContent}
-        columnWrapperStyle={styles.columnWrapper}
+        // columnWrapperStyle={styles.columnWrapper}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <MovieCard
-            id={item.id}
+            id={item?.id}
             title={item.title}
             posterPath={item.poster_path}
             onPress={() => handleMoviePress(item.id)}
