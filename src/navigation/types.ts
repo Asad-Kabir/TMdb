@@ -1,7 +1,7 @@
 export type RootStackParamList = {
     Home: undefined;
     MovieDetail: { movieId: number };
-    // Search: undefined;
+    Search: undefined;
     // SeatMapping: { movieId: number; movieTitle: string };
     // VideoPlayer: { videoKey: string };
   };

@@ -13,26 +13,30 @@ import { FONTS, FONT_SIZES } from '@styles/typography';
 import AppNavigator from '@navigation/AppNavigator';
 import { movieService } from '@api/services';
 import { COLORS } from '@styles/colors';
+import { Provider } from 'react-redux';
+import { store } from '@store/index';
 
 const App = () => {
 
-  useEffect(() => {
-    const testAPI = async () => {
-      try {
-        const data = await movieService.getUpcomingMovies();
-        console.log('Movies:', JSON.stringify(data, null, 2));
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    testAPI();
-  }, []);
+  // useEffect(() => {
+  //   const testAPI = async () => {
+  //     try {
+  //       const data = await movieService.getUpcomingMovies();
+  //       console.log('Movies:', JSON.stringify(data, null, 2));
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   };
+  //   testAPI();
+  // }, []);
 
   return (
+    <Provider store={store}>
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
       <AppNavigator />
     </SafeAreaProvider>
+    </Provider>
   );
 };
 
